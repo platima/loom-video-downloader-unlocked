@@ -15,8 +15,6 @@ Easily download videos hosted by loom.com in one click with this Loom video down
 
 ## Table of Contents
 - [Features](#features)
-- [Screenshots](#screenshots)
-- [Videos](#videos)
 - [Installation Instructions](#installation-instructions)
   - [How to install \& setup (MAC)](#how-to-install--setup-mac)
   - [How to use (MAC)](#how-to-use-mac)
