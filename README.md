@@ -1,7 +1,4 @@
----
-title: Loom Video Downloader | How to Download Loom Videos Even if You Have a Free Account
-
----
+<img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=platima.loomdownloader" height="20" />
 
 # Loom Video Downloader (Browser Extension)
 
@@ -10,26 +7,14 @@ Easily download videos hosted by loom.com in one click with this Loom video down
 - Download loom videos from your account where the DL button was removed
 - Download loom videos embedded on other web pages
 
-![loom video downloader](https://github-production-user-asset-6210df.s3.amazonaws.com/45643901/473001953-7428c562-6869-47a4-b8ea-451ef8f3d091.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250813%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250813T010120Z&X-Amz-Expires=300&X-Amz-Signature=cd7661a21990a5faaf108ac027be305949e50e5011dd1cfc93b36feb6695adc9&X-Amz-SignedHeaders=host)
-
 ## 🔗 Links
 
-- 🎁 Get it [here](https://serp.ly/loom-video-downloader)
-- ❓ Check FAQs [here](https://github.com/orgs/serpapps/discussions/categories/faq)
-- 🐛 Report bugs [here](https://github.com/serpapps/loom-video-downloader/issues)
-- 🆕 Request features [here](https://github.com/serpapps/loom-downloader/issues)
-
-### Resources
-
-- 💬 [Community](https://serp.ly/@serp/community)
-- 💌 [Newsletter](https://serp.ly/@serp/email)
-- 🛒 [Shop](https://serp.ly/@serp/store)
-- 🎓 [Courses](https://serp.ly/@serp/courses)
+- ❓ Check FAQs [[here](https://github.com/orgs/serpapps/discussions/categories/faq)](https://github.com/platima/loom-video-downloader-unlocked/discussions/categories/q-a)
+- 🐛 Report bugs [[here](https://github.com/serpapps/loom-video-downloader/issues)](https://github.com/platima/loom-video-downloader-unlocked/issues)
+- 🆕 Request features [[here](https://github.com/serpapps/loom-downloader/issues)](https://github.com/platima/loom-video-downloader-unlocked/issues)
 
 ## Table of Contents
 - [Features](#features)
-- [Screenshots](#screenshots)
-- [Videos](#videos)
 - [Installation Instructions](#installation-instructions)
   - [How to install \& setup (MAC)](#how-to-install--setup-mac)
   - [How to use (MAC)](#how-to-use-mac)
@@ -53,38 +38,19 @@ Easily download videos hosted by loom.com in one click with this Loom video down
 - Thumbnail Preview
 - Minimal Permissions
 - Download Progress Bar
-  
----
-
-## Screenshots
-
-<br><br>
-![loom-downloader-screenshot-1](https://github-production-user-asset-6210df.s3.amazonaws.com/45643901/473279380-a64edf75-7ad3-4d37-b2ff-552bad5d9139.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250813%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250813T010128Z&X-Amz-Expires=300&X-Amz-Signature=56c8b192a1a0679f719b3f9c7bca94b2ccaea72dfa86308f3bcd3246496ac480&X-Amz-SignedHeaders=host)
-<br><br>
-![loom-downloader-screenshot-2]([https://github.com/user-attachments/assets/8114d5e2-6ef0-4ac2-b632-0e87594a822c](https://github-production-user-asset-6210df.s3.amazonaws.com/45643901/473279401-8114d5e2-6ef0-4ac2-b632-0e87594a822c.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250813%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250813T010133Z&X-Amz-Expires=300&X-Amz-Signature=fc095da74c8114fc6ae8e6c333cffbb08a721510fad90d0619d60dae6cdb6d39&X-Amz-SignedHeaders=host))
-<br><br>
-
-## Videos
-
-[![Video Thumbnail](https://raw.githubusercontent.com/devinschumacher/uploads/refs/heads/main/images/loom-video-downloader-installation-and-use-instructions-how-to-download-loom-videos.jpg)](https://www.youtube.com/watch?v=bbkhxMpIH4w)
-
-
----
+- No licensing
 
 ## Installation Instructions
 
 ### How to install
 
 1. "Star ⭐" this repository <a href="https://public-files.gumroad.com/fgqglcvq4v0u32yc0x0jvsllk4x6" target="_blank">click the button that looks like this</a>
-2. Download the latest version (`.zip`) from the [Releases](https://github.com/serpapps/loom-video-downloader/releases) area
+2. Download the latest version (`.zip`) from the [Releases](https://github.com/platima/loom-video-downloader-unlocked/releases) area
 3. Double click the `.zip` file on your computer to unzip it
 4. Open Chrome and go to `chrome://extensions/`
 5. Enable "developer mode" by clicking the toggle switch on the top right
 6. Install the 'extension' by clicking "Load unpacked" and choosing the 'extension folder' on your computer (the FOLDER, not the .zip)
 7. Pin the extension to chrome by clicking the puzzle looking icon thing and then the 'pin' icon
-8. When you click on the extension for the first time, you will need to enter your `email` & `license key` associated with the extension
-
-> Note: You can find your license key in your email confirmation from purchasing the product
 
 ### How to use
 
@@ -93,13 +59,9 @@ Easily download videos hosted by loom.com in one click with this Loom video down
 
 > Note: If the video auto-discovery isn't working, try clicking PLAY on the loom video (sometimes that helps)
 
-
-<br><br><br>
-
 <details>
-  <summary>
-## Permissions Justifications
-</summary>
+  <summary>Permissions Justifications</summary>
+  
 ### Single purpose description  
 This extension allows users to download Loom videos directly from the Loom website to their local computer with a single click, making it easy to save and access videos offline.
 
