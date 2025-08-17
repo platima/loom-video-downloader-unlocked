@@ -1,8 +1,8 @@
 # CHANGELOG
 
-For detailed release notes, see [GitHub Releases](https://github.com/serpapps/loom-video-downloader/releases).
+For detailed release notes, see [GitHub Releases](https://github.com/platima/loom-video-downloader-unlocked/releases).
 
 ## Version History
 
-- [v1.0.0](https://github.com/serpapps/loom-video-downloader/releases/tag/v1.0.0)
+- [v0.1.0](https://github.com/platima/loom-video-downloader-unlocked/releases/tag/v0.1.0)
 

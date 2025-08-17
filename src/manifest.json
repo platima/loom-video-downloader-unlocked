@@ -21,19 +21,13 @@
     "https://*.loom.com/*",
     "https://*.loomcdn.com/*",
     "https://*.cloudfront.net/*",
-    "https://unpkg.com/*",
-    "https://api.gumroad.com/*"
+    "https://unpkg.com/*"
   ],
   "background": {
     "service_worker": "background-enhanced.js",
     "type": "module"
   },
   "content_scripts": [
-    {
-      "matches": ["https://www.loom.com/*", "https://*.loom.com/*"],
-      "js": ["content.js"],
-      "run_at": "document_idle"
-    },
     {
       "matches": ["<all_urls>"],
       "js": ["content-enhanced.js"],

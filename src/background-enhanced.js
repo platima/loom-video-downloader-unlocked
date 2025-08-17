@@ -134,7 +134,7 @@ function blobToBase64(blob) {
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result;
-      resolve(result.split(",")[1]); // Remove data:mime;base64, prefix
+      resolve(result.split(",")[1]); // Remove data URL prefix
     };
     reader.onerror = reject;
     reader.readAsDataURL(blob);
@@ -445,7 +445,7 @@ async function callUrlApi(endpoint, videoId, password) {
 
 // Browser-compatible download function
 async function downloadFile(url, fileName) {
-  console.log(`🔽 Starting direct download from: ${url}`);
+  console.log(`📽 Starting direct download from: ${url}`);
   activeDownloads++;
   console.log(`📊 Active downloads: ${activeDownloads}`);
   
@@ -553,7 +553,7 @@ async function downloadFile(url, fileName) {
 }
 
 async function downloadHLSSegments(segments, fileName) {
-  console.log(`🔽 Downloading ${segments.length} HLS segments`);
+  console.log(`📽 Downloading ${segments.length} HLS segments`);
   activeDownloads++;
   console.log(`📊 Active downloads: ${activeDownloads}`);
   
@@ -695,7 +695,7 @@ async function mergeAudioVideo(audioBlob, videoBlob, fileName, isEmbedSplit = fa
     console.log(`📊 Video blob size: ${videoBlob ? videoBlob.size : 0} bytes`);
 
     // Ensure offscreen document is created
-    console.log("🔄 Creating offscreen document...");
+    console.log("📄 Creating offscreen document...");
     await createOffscreenDocument();
     console.log("✅ Offscreen document ready");
 
@@ -704,7 +704,7 @@ async function mergeAudioVideo(audioBlob, videoBlob, fileName, isEmbedSplit = fa
     if (videoBlob) await set(videoKey, videoBlob);
     console.log("✅ Blobs stored.");
 
-    console.log("🔄 Sending merge request to offscreen document...");
+    console.log("📄 Sending merge request to offscreen document...");
 
     // Create a promise that will be resolved when we receive the response
     const response = await new Promise((resolve, reject) => {
@@ -764,7 +764,7 @@ async function mergeAudioVideo(audioBlob, videoBlob, fileName, isEmbedSplit = fa
       throw new Error(errorMsg);
     }
 
-    console.log("🔄 Retrieving merged blob from IndexedDB...");
+    console.log("📄 Retrieving merged blob from IndexedDB...");
     const mergedBlob = await get(mergedKey);
     if (!mergedBlob) {
       throw new Error("Merged data not found in storage.");
@@ -811,7 +811,7 @@ async function mergeAudioVideo(audioBlob, videoBlob, fileName, isEmbedSplit = fa
 // Browser-compatible DASH segment download with audio/video merging and progressive processing
 async function downloadDASHSegments(audioSegments, videoSegments, fileName, isEmbedSplit = false) {
   console.log(
-    `🔽 Downloading DASH segments progressively - Audio: ${audioSegments.length}, Video: ${videoSegments.length}`
+    `📽 Downloading DASH segments progressively - Audio: ${audioSegments.length}, Video: ${videoSegments.length}`
   );
   activeDownloads++;
   console.log(`📊 Active downloads: ${activeDownloads}`);
@@ -825,7 +825,7 @@ async function downloadDASHSegments(audioSegments, videoSegments, fileName, isEm
       for (let i = 0; i < segments.length; i += batchSize) {
         const batch = segments.slice(i, i + batchSize);
         console.log(
-          `🔄 Processing ${type} batch ${
+          `📄 Processing ${type} batch ${
             Math.floor(i / batchSize) + 1
           }/${Math.ceil(segments.length / batchSize)}`
         );
@@ -939,7 +939,7 @@ async function downloadDASHSegments(audioSegments, videoSegments, fileName, isEm
       return;
     }
 
-    console.log("🔄 Merging audio and video using ffmpeg.wasm...");
+    console.log("📄 Merging audio and video using ffmpeg.wasm...");
     console.log(
       `📊 Audio blob type: ${audioBlob.type}, size: ${audioBlob.size}`
     );
@@ -958,7 +958,7 @@ async function downloadDASHSegments(audioSegments, videoSegments, fileName, isEm
       console.log(`✅ Merged DASH download initiated: ${fileName}`);
     } catch (mergeError) {
       console.error("❌ ffmpeg.wasm merge failed:", mergeError);
-      console.log("🔄 Falling back to separate audio/video downloads...");
+      console.log("📄 Falling back to separate audio/video downloads...");
 
       try {
         // Download audio and video as separate files
@@ -1047,7 +1047,7 @@ async function downloadLoomVideo(url, password) {
     throw new Error(error);
   }
 
-  console.log("📝 Video Title:", metadata.name);
+  console.log("🔍 Video Title:", metadata.name);
   sendProgressToPopup(15, "Getting download URLs...");
 
   const rawUrl = await callUrlApi("raw-url", videoId, password);
@@ -1087,7 +1087,7 @@ async function downloadLoomVideo(url, password) {
     // Handle -split.m3u8 URLs
     if (downloadUrl.includes("-split.m3u8")) {
       downloadUrl = downloadUrl.replace("-split.m3u8", ".m3u8");
-      console.log("🔄 Updated Download URL:", downloadUrl);
+      console.log("📄 Updated Download URL:", downloadUrl);
     }
 
     const response = await fetch(downloadUrl);
@@ -1364,7 +1364,7 @@ async function downloadLoomVideo(url, password) {
       await downloadFile(downloadUrl, fileName);
     }
   } else {
-    console.log("📁 Direct file download");
+    console.log("🔍 Direct file download");
     await downloadFile(downloadUrl, fileName);
   }
 
@@ -1595,7 +1595,7 @@ async function findLoomEmbed() {
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  console.log("🔔 Background received message:", request);
+  console.log("📧 Background received message:", request);
 
   // These are fire-and-forget messages from the offscreen document or self.
   // We don't send a response, so we don't return true.
@@ -1613,48 +1613,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return false; // No async response needed for fire-and-forget
   }
 
-  // All other actions are async and require a response.
-  const actionsToProtect = [
-    "extractVideoInfo",
-    "downloadVideo",
-    "findLoomEmbed",
-  ];
-
-  if (actionsToProtect.includes(request.action)) {
-    chrome.storage.local.get("isActivated", (data) => {
-      console.log(
-        "🔐 Checking activation for action:",
-        request.action,
-        "Activated:",
-        data.isActivated
-      );
-      try {
-        if (data.isActivated) {
-          handleRequest(request, sender, sendResponse);
-        } else {
-          console.log("❌ Extension not activated, sending error response");
-          sendResponse({
-            success: false,
-            error: "Please activate the extension with a valid license key.",
-          });
-        }
-      } catch (error) {
-        console.error("❌ Error in activation check:", error);
-        sendResponse({
-          success: false,
-          error: "Error checking activation status.",
-        });
-      }
-    });
-    return true; // Indicates async response
-  } else if (request.action) {
-    // For other async actions that don't require activation
-    console.log("🔓 Action doesn't require activation:", request.action);
+  // All other actions are async and require a response - NO ACTIVATION CHECK NEEDED
+  if (request.action) {
+    console.log("📧 Processing action:", request.action);
     handleRequest(request, sender, sendResponse);
     return true; // Indicates async response
   } else {
     // For messages without action, handle them as fire-and-forget
-    console.log("🔄 Handling message without action:", request.type || "unknown");
+    console.log("📄 Handling message without action:", request.type || "unknown");
     handleRequest(request, sender, null);
     return false; // No async response needed
   }
@@ -1821,22 +1787,22 @@ function handleRequest(request, sender, sendResponse) {
       switch (request.type) {
         case "MERGE_AUDIO_VIDEO":
           console.log(
-            "🔄 Ignoring MERGE_AUDIO_VIDEO message in background script"
+            "📄 Ignoring MERGE_AUDIO_VIDEO message in background script"
           );
           break;
         case "MERGE_SEGMENTS":
           console.log(
-            "🔄 Ignoring MERGE_SEGMENTS message in background script"
+            "📄 Ignoring MERGE_SEGMENTS message in background script"
           );
           break;
         case "MERGE_SEGMENTS_RESPONSE":
           console.log(
-            "🔄 Ignoring MERGE_SEGMENTS_RESPONSE message in background script"
+            "📄 Ignoring MERGE_SEGMENTS_RESPONSE message in background script"
           );
           break;
         case "MERGE_RESPONSE":
           console.log(
-            "🔄 Ignoring MERGE_RESPONSE message in background script"
+            "📄 Ignoring MERGE_RESPONSE message in background script"
           );
           // Don't send response for fire-and-forget messages
           break;

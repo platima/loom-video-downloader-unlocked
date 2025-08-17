@@ -10,12 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordInput = document.getElementById("passwordInput");
   const helpBtn = document.getElementById("helpBtn");
   const helpTextDisplay = document.getElementById("helpTextDisplay");
-  const activationSection = document.getElementById("activationSection");
   const mainContent = document.getElementById("mainContent");
-  const licenseKeyInput = document.getElementById("licenseKeyInput");
-  const emailInput = document.getElementById("emailInput");
-  const activateBtn = document.getElementById("activateBtn");
-  const activationStatus = document.getElementById("activationStatus");
   const embedDetected = document.getElementById("embedDetected");
   const qualitySection = document.getElementById("qualitySection");
   const qualitySelect = document.getElementById("qualitySelect");
@@ -68,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function hideProgress() {
-    console.log("🔲 Hiding progress");
+    console.log("📲 Hiding progress");
     downloadInProgress = false;
     
     // Clear download state from storage
@@ -454,6 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("⚠️ Cancel button is disabled, ignoring click");
     }
   });
+  
   let helpTimeout;
   helpBtn.addEventListener("click", () => {
     // Clear any existing timeout
@@ -469,8 +465,6 @@ document.addEventListener("DOMContentLoaded", () => {
       helpTextDisplay.classList.add("hidden");
     }, 5000);
   });
-
-  activateBtn.addEventListener("click", handleActivation);
 
   // Initialize button states on popup load
   async function initializeButtonStates() {
@@ -503,55 +497,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize on DOM load
   initializeButtonStates();
-
-  async function handleActivation() {
-    const licenseKey = licenseKeyInput.value.trim();
-    const email = emailInput.value.trim();
-
-    if (!email) {
-      activationStatus.textContent = "Please enter your email.";
-      activationStatus.className = "status error";
-      return;
-    }
-
-    if (!licenseKey) {
-      activationStatus.textContent = "Please enter a license key.";
-      activationStatus.className = "status error";
-      return;
-    }
-
-    activationStatus.textContent = "Verifying license key...";
-    activationStatus.className = "status loading";
-    activateBtn.disabled = true;
-
-    try {
-      const result = await Auth.activateLicense(licenseKey, email);
-      
-      if (result.success) {
-        showActivationSuccess();
-      } else {
-        activationStatus.textContent = result.error || "License verification failed.";
-        activationStatus.className = "status error";
-      }
-    } catch (error) {
-      console.error("Error during activation:", error);
-      activationStatus.textContent = "An error occurred during verification. Please try again.";
-      activationStatus.className = "status error";
-    } finally {
-      activateBtn.disabled = false;
-    }
-  }
-
-  function showActivationSuccess() {
-    activationSection.classList.add("hidden");
-    mainContent.classList.remove("hidden");
-    showStatus("Loom Downloader activated!", "success");
-    
-    // Check download state first, then video detection if needed
-    setTimeout(() => {
-      checkDownloadState();
-    }, 1000); // Small delay to let the success message show briefly
-  }
 
   function checkDownloadState() {
     chrome.storage.local.get(["downloadInProgress", "downloadPercentage", "downloadStatus", "downloadSpeed"], (data) => {
@@ -595,22 +540,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function showMainContent() {
-    activationSection.classList.add("hidden");
-    mainContent.classList.remove("hidden");
-    checkDownloadState();
-  }
-
-  // Check activation status on load
-  Auth.checkActivationStatus().then((status) => {
-    console.log("🔍 Checking activation status:", status);
-    if (status.isActivated) {
-      showMainContent();
-    } else {
-      activationSection.classList.remove("hidden");
-      mainContent.classList.add("hidden");
-    }
-  });
+  // Start the app by checking download state, then video detection if needed
+  checkDownloadState();
 
   // Listen for progress updates from background script
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
