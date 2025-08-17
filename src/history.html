@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Loom Download History</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="history.css" />
+  </head>
+  <body>
+    <div class="history-container">
+      <header class="history-header">
+        <h1>Download History</h1>
+        <div class="header-actions">
+          <button id="clearHistory" class="btn btn-danger">Clear All</button>
+          <button id="exportHistory" class="btn btn-primary">Export</button>
+          <button id="refreshHistory" class="btn btn-secondary">
+            <span class="icon-refresh">↻</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="history-stats">
+        <div class="stat-card">
+          <div class="stat-value" id="totalDownloads">0</div>
+          <div class="stat-label">Total Downloads</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="totalSize">0 MB</div>
+          <div class="stat-label">Total Size</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="successRate">0%</div>
+          <div class="stat-label">Success Rate</div>
+        </div>
+      </div>
+
+      <div class="history-filters">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search by title or ID..."
+          class="search-input"
+        />
+        <select id="statusFilter" class="filter-select">
+          <option value="">All Status</option>
+          <option value="completed">Completed</option>
+          <option value="failed">Failed</option>
+          <option value="in_progress">In Progress</option>
+        </select>
+        <select id="sortBy" class="filter-select">
+          <option value="date_desc">Newest First</option>
+          <option value="date_asc">Oldest First</option>
+          <option value="size_desc">Largest First</option>
+          <option value="size_asc">Smallest First</option>
+        </select>
+      </div>
+
+      <div id="historyList" class="history-list">
+        <!-- History items will be dynamically inserted here -->
+      </div>
+
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">📹</div>
+        <h3>No downloads yet</h3>
+        <p>Your download history will appear here</p>
+      </div>
+
+      <div id="loadingState" class="loading-state">
+        <div class="loader"></div>
+        <p>Loading history...</p>
+      </div>
+    </div>
+
+    <script src="history.js"></script>
+  </body>
+</html>

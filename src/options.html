@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loom Downloader Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Loom Downloader Settings</h1>
+        <p class="subtitle">Customize your download experience</p>
+      </header>
+
+      <section class="settings-section">
+        <h2>Download Settings</h2>
+
+        <div class="setting-item">
+          <label for="downloadPath">Download Folder Name</label>
+          <input type="text" id="downloadPath" placeholder="Loom" />
+          <p class="help-text">
+            Videos will be saved to Downloads/[folder name]
+          </p>
+        </div>
+
+        <div class="setting-item">
+          <label for="fileNameFormat">File Name Format</label>
+          <select id="fileNameFormat">
+            <option value="title_id_date">[Title]_[ID]_[Date]</option>
+            <option value="title_date">[Title]_[Date]</option>
+            <option value="id_title">[ID]_[Title]</option>
+            <option value="date_title">[Date]_[Title]</option>
+          </select>
+          <p class="help-text">Choose how downloaded files are named</p>
+        </div>
+
+        <div class="setting-item">
+          <label for="videoQuality">Preferred Video Quality</label>
+          <select id="videoQuality">
+            <option value="highest">Highest Available</option>
+            <option value="1080p">1080p</option>
+            <option value="720p">720p</option>
+            <option value="480p">480p</option>
+            <option value="lowest">Lowest (Fast Download)</option>
+          </select>
+          <p class="help-text">Select default video quality when available</p>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h2>Behavior Settings</h2>
+
+        <div class="setting-item checkbox">
+          <input type="checkbox" id="autoDetect" />
+          <label for="autoDetect">Auto-detect videos when page loads</label>
+        </div>
+
+        <div class="setting-item checkbox">
+          <input type="checkbox" id="showNotifications" />
+          <label for="showNotifications">Show desktop notifications</label>
+        </div>
+
+        <div class="setting-item checkbox">
+          <input type="checkbox" id="closePopupAfterDownload" />
+          <label for="closePopupAfterDownload"
+            >Close popup after starting download</label
+          >
+        </div>
+
+        <div class="setting-item checkbox">
+          <input type="checkbox" id="saveHistory" />
+          <label for="saveHistory">Save download history</label>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h2>Advanced Settings</h2>
+
+        <div class="setting-item checkbox">
+          <input type="checkbox" id="debugMode" />
+          <label for="debugMode">Enable debug mode (console logging)</label>
+        </div>
+
+        <div class="setting-item">
+          <label for="maxRetries">Max download retries</label>
+          <input type="number" id="maxRetries" min="0" max="10" value="3" />
+          <p class="help-text">Number of times to retry failed downloads</p>
+        </div>
+
+        <div class="setting-item checkbox">
+          <input type="checkbox" id="clipboardMonitoring" />
+          <label for="clipboardMonitoring"
+            >Monitor clipboard for Loom URLs</label
+          >
+          <p class="help-text">
+            Automatically detect when you copy a Loom link
+          </p>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h2>Download History</h2>
+        <div class="history-controls">
+          <button id="viewHistory" class="btn btn-secondary">
+            View History
+          </button>
+          <button id="clearHistory" class="btn btn-danger">
+            Clear History
+          </button>
+          <button id="exportHistory" class="btn btn-secondary">
+            Export as CSV
+          </button>
+        </div>
+        <div id="historyStats" class="history-stats hidden">
+          <p>Total downloads: <span id="totalDownloads">0</span></p>
+          <p>Total size: <span id="totalSize">0 MB</span></p>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button id="saveSettings" class="btn btn-primary">Save Settings</button>
+        <button id="resetSettings" class="btn btn-secondary">
+          Reset to Defaults
+        </button>
+      </div>
+
+      <div id="status" class="status hidden"></div>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>
