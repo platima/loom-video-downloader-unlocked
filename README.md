@@ -9,22 +9,19 @@ Easily download videos hosted by loom.com in one click with this Loom video down
 
 ## 🔗 Links
 
-- ❓ Check FAQs [[here](https://github.com/orgs/serpapps/discussions/categories/faq)](https://github.com/platima/loom-video-downloader-unlocked/discussions/categories/q-a)
-- 🐛 Report bugs [[here](https://github.com/serpapps/loom-video-downloader/issues)](https://github.com/platima/loom-video-downloader-unlocked/issues)
-- 🆕 Request features [[here](https://github.com/serpapps/loom-downloader/issues)](https://github.com/platima/loom-video-downloader-unlocked/issues)
+- ❓ Check FAQs: [Q&A Discussions](https://github.com/platima/loom-video-downloader-unlocked/discussions/categories/q-a)
+- 🐛 Report Bugs: [Issues](https://github.com/platima/loom-video-downloader-unlocked/issues)
+- 🆕 Request Features: [Feature Requests](https://github.com/platima/loom-video-downloader-unlocked/issues)
 
 ## Table of Contents
 - [Features](#features)
 - [Installation Instructions](#installation-instructions)
-  - [How to install \& setup (MAC)](#how-to-install--setup-mac)
-  - [How to use (MAC)](#how-to-use-mac)
-- [How to install \& setup (Windows)](#how-to-install--setup-windows)
-- [How to use (Windows)](#how-to-use-windows)
+- [How to Use](#how-to-use)
 
 ## Features
 
 - One-click download from any video page
-- 100% privacy-friendly – no tracking or data collection
+- 100% privacy-friendly — no tracking or data collection
 - Auto-detect videos on the page
 - Smart Page Scan
 - Embedded Video Support
@@ -38,26 +35,57 @@ Easily download videos hosted by loom.com in one click with this Loom video down
 - Thumbnail Preview
 - Minimal Permissions
 - Download Progress Bar
-- No licensing
+- **Completely Free** - No licensing required
 
 ## Installation Instructions
 
 ### How to install
 
-1. "Star ⭐" this repository <a href="https://public-files.gumroad.com/fgqglcvq4v0u32yc0x0jvsllk4x6" target="_blank">click the button that looks like this</a>
-2. Download the latest version (`.zip`) from the [Releases](https://github.com/platima/loom-video-downloader-unlocked/releases) area
-3. Double click the `.zip` file on your computer to unzip it
+1. ⭐ "Star" this repository to support the project
+2. Download the latest version (`.zip`) from the [Releases](https://github.com/platima/loom-video-downloader-unlocked/releases) page
+3. Extract the `.zip` file on your computer
 4. Open Chrome and go to `chrome://extensions/`
-5. Enable "developer mode" by clicking the toggle switch on the top right
-6. Install the 'extension' by clicking "Load unpacked" and choosing the 'extension folder' on your computer (the FOLDER, not the .zip)
-7. Pin the extension to chrome by clicking the puzzle looking icon thing and then the 'pin' icon
+5. Enable "Developer mode" by clicking the toggle switch on the top right
+6. Click "Load unpacked" and select the extracted extension folder (the FOLDER, not the .zip file)
+7. Pin the extension to Chrome by clicking the puzzle icon in the toolbar, then click the pin icon next to "Loom Video Downloader"
 
-### How to use
+### How to Use
 
-1. Navigate to a page where there is a Loom video & click on the extension to see the video details populate
-2. Click the "Download" button
+1. Navigate to any page with a Loom video
+2. Click the extension icon in your browser toolbar
+3. The extension will automatically detect the video and show details
+4. Click the "Download" button to save the video
 
-> Note: If the video auto-discovery isn't working, try clicking PLAY on the loom video (sometimes that helps)
+> **Tip**: If auto-discovery isn't working, try clicking PLAY on the Loom video first, then click the extension icon.
+
+## ⚠️ Important Disclaimer
+
+**This extension is intended for downloading Loom videos that you have legitimate access to or own.** Please ensure you have proper permissions before downloading any content:
+
+- ✅ **Your own videos** - Videos you created or uploaded
+- ✅ **Publicly shared videos** - Videos explicitly shared with you or made public
+- ✅ **Educational/work content** - Videos shared within your organization with download permissions
+- ✅ **Videos with explicit permission** - Content where the creator has given you download rights
+
+**❌ Do NOT download:**
+- Videos you don't have permission to access
+- Copyrighted content without authorization
+- Private videos from other users without explicit consent
+- Content that violates Loom's Terms of Service
+
+**Users are solely responsible for ensuring they have the right to download and store any content.** The developers of this extension are not responsible for any misuse or copyright violations.
+
+## Browser Compatibility
+
+- ✅ Chrome (Recommended)
+- ✅ Microsoft Edge
+- ✅ Other Chromium-based browsers
+
+## Troubleshooting
+
+- **Video not detected**: Make sure you're on a page with a Loom video and try refreshing
+- **Download fails**: Check that you have sufficient disk space and download permissions
+- **Extension not working**: Try disabling and re-enabling the extension
 
 <details>
   <summary>Permissions Justifications</summary>
@@ -65,9 +93,8 @@ Easily download videos hosted by loom.com in one click with this Loom video down
 ### Single purpose description  
 This extension allows users to download Loom videos directly from the Loom website to their local computer with a single click, making it easy to save and access videos offline.
 
-
 ### downloads justification  
-The "downloads" permission is required to save Loom videos from the web directly to the user's computer. Without this, the extension would not be able to transfer video files to the user’s local storage.
+The "downloads" permission is required to save Loom videos from the web directly to the user's computer. Without this, the extension would not be able to transfer video files to the user's local storage.
 
 ### activeTab justification  
 The "activeTab" permission is necessary to interact with the Loom website that the user is currently viewing. It enables the extension to detect and download videos only when the user activates the extension on an appropriate tab.
@@ -91,7 +118,7 @@ The "tabs" permission is required to access information about the user's open ta
 The "scripting" permission allows the extension to execute scripts on Loom pages to detect video elements and facilitate the download functionality.
 
 ### offscreen justification  
-The "offscreen" permission is used to process video files in the background, ensuring that downloads can be completed smoothly without interrupting the user’s browsing experience.
+The "offscreen" permission is used to process video files in the background, ensuring that downloads can be completed smoothly without interrupting the user's browsing experience.
 
 ### cookies justification  
 The "cookies" permission may be required to access authentication cookies for Loom, ensuring the extension can download videos that may require the user to be logged in.
@@ -100,13 +127,9 @@ The "cookies" permission may be required to access authentication cookies for Lo
 The "webNavigation" permission helps the extension monitor navigation to Loom video pages, enabling it to offer download functionality only when appropriate.
 
 ### Host permission justification
-Host permissions are requested for loom.com and its subdomains to enable the extension to detect and download Loom videos directly from the Loom website. No other hosts are accessed
-
+Host permissions are requested for loom.com and its subdomains to enable the extension to detect and download Loom videos directly from the Loom website. No other hosts are accessed.
 
 ### Remote code justification  
-No, I am not using Remote code. All code is packaged within the extension and does not execute any external scripts or resources.
-
-
-
+No, this extension does not use remote code. All code is packaged within the extension and does not execute any external scripts or resources.
 
 </details>
